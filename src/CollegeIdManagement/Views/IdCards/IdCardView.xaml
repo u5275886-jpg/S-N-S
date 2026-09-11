@@ -1,0 +1,48 @@
+<UserControl x:Class="CollegeIdManagement.Views.IdCards.IdCardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:templates="clr-namespace:CollegeIdManagement.Templates">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="380" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Student Selection List -->
+        <Border Grid.Column="0" Style="{StaticResource SectionCard}" Margin="0,0,15,0">
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Top" Text="Select Student for ID Card" FontSize="14" FontWeight="Bold" Foreground="#751A38" Margin="0,0,0,12" />
+                <DataGrid ItemsSource="{Binding Students}" SelectedItem="{Binding SelectedStudent}" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Roll No" Binding="{Binding RollNo}" Width="70" />
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
+                        <DataGridTextColumn Header="Course" Binding="{Binding Course}" Width="70" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </DockPanel>
+        </Border>
+
+        <!-- Preview & Generate Panel -->
+        <Border Grid.Column="1" Style="{StaticResource SectionCard}">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="ID Card Real-Time Preview" FontSize="16" FontWeight="Bold" Foreground="#751A38" HorizontalAlignment="Center" Margin="0,0,0,20" />
+
+                    <!-- Live Card Render -->
+                    <Border BorderBrush="#B89135" BorderThickness="1" CornerRadius="8" Padding="10" Background="#FAFAFA" Margin="0,0,0,20">
+                        <StackPanel DataContext="{Binding CardWrapper}">
+                            <templates:StudentIdCardFront Margin="0,0,0,15" />
+                            <templates:StudentIdCardBack />
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Control Buttons -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Content="Full Screen Preview" Command="{Binding PreviewCardCommand}" Style="{StaticResource OutlineButton}" Margin="0,0,10,0" Height="38" />
+                        <Button Content="Generate PDF Card" Command="{Binding ExportPdfCommand}" Style="{StaticResource ModernButton}" Height="38" />
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</UserControl>

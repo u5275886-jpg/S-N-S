@@ -1,0 +1,10 @@
+<UserControl x:Class="CollegeIdManagement.Templates.StaffIdCardBack"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Width="323" Height="204" Background="White">
+    <Border BorderBrush="#1F2024" BorderThickness="2" CornerRadius="8" ClipToBounds="True">
+        <Grid Padding="10">
+            <TextBlock Text="STAFF CARD BACK" FontSize="10" FontWeight="Bold" Foreground="#1F2024" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+    </Border>
+</UserControl>

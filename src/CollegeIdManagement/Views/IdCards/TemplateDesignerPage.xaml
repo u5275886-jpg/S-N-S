@@ -1,0 +1,59 @@
+<UserControl x:Class="CollegeIdManagement.Views.IdCards.TemplateDesignerPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Dynamic Data Tags Toolbox -->
+        <Border Grid.Column="0" Style="{StaticResource SectionCard}" Margin="0,0,15,0">
+            <StackPanel>
+                <TextBlock Text="Template Tags Toolbox" FontSize="14" FontWeight="Bold" Foreground="#751A38" Margin="0,0,0,12" />
+                <TextBlock Text="Click to add field tag:" FontSize="11" Foreground="#666" Margin="0,0,0,10" />
+
+                <Button Content="{{student_name}}" Command="{Binding AddTextTagCommand}" CommandParameter="{{student_name}}" Style="{StaticResource OutlineButton}" Margin="0,0,0,6" />
+                <Button Content="{{roll_no}}" Command="{Binding AddTextTagCommand}" CommandParameter="{{roll_no}}" Style="{StaticResource OutlineButton}" Margin="0,0,0,6" />
+                <Button Content="{{member_code}}" Command="{Binding AddTextTagCommand}" CommandParameter="{{member_code}}" Style="{StaticResource OutlineButton}" Margin="0,0,0,6" />
+                <Button Content="{{course}}" Command="{Binding AddTextTagCommand}" CommandParameter="{{course}}" Style="{StaticResource OutlineButton}" Margin="0,0,0,6" />
+                <Button Content="{{session}}" Command="{Binding AddTextTagCommand}" CommandParameter="{{session}}" Style="{StaticResource OutlineButton}" Margin="0,0,0,6" />
+                <Button Content="{{dob}}" Command="{Binding AddTextTagCommand}" CommandParameter="{{dob}}" Style="{StaticResource OutlineButton}" Margin="0,0,0,6" />
+                <Button Content="{{blood_group}}" Command="{Binding AddTextTagCommand}" CommandParameter="{{blood_group}}" Style="{StaticResource OutlineButton}" Margin="0,0,0,6" />
+
+                <Separator Margin="0,15" />
+                <Button Content="Save Designer Layout" Command="{Binding SaveTemplateCommand}" Style="{StaticResource ModernButton}" />
+            </StackPanel>
+        </Border>
+
+        <!-- Canvas Designer Board -->
+        <Border Grid.Column="1" Style="{StaticResource SectionCard}">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Visual ID Card Design Canvas" FontSize="16" FontWeight="Bold" Foreground="#751A38" Margin="0,0,0,15" HorizontalAlignment="Center" />
+
+                <Border Width="323" Height="204" Background="White" BorderBrush="#751A38" BorderThickness="2" CornerRadius="8">
+                    <ItemsControl ItemsSource="{Binding CanvasElements}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <Canvas />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemContainerStyle>
+                            <Style TargetType="ContentPresenter">
+                                <Setter Property="Canvas.Left" Value="{Binding X}" />
+                                <Setter Property="Canvas.Top" Value="{Binding Y}" />
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="#B89135" BorderThickness="1" Background="#0D751A38" Padding="4,2">
+                                    <TextBlock Text="{Binding Content}" FontSize="{Binding FontSize}" FontWeight="Bold" Foreground="#1F2024" />
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Border>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

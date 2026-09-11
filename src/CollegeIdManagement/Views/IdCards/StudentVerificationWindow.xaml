@@ -1,0 +1,25 @@
+<Window x:Class="CollegeIdManagement.Views.IdCards.StudentVerificationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Student ID Verification" Height="400" Width="500"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Padding="20" Background="#F6F3F5">
+        <StackPanel>
+            <TextBlock Text="QR Student ID Verification System" FontSize="16" FontWeight="Bold" Foreground="#751A38" Margin="0,0,0,15" HorizontalAlignment="Center" />
+
+            <TextBlock Text="Enter QR Payload Token:" Style="{StaticResource FormLabel}" />
+            <TextBox x:Name="TxtQrToken" Style="{StaticResource ModernTextBox}" Margin="0,0,0,10" />
+
+            <Button Content="VERIFY STUDENT" Click="BtnVerify_Click" Style="{StaticResource ModernButton}" Height="38" Margin="0,0,0,20" />
+
+            <Border x:Name="ResultCard" Style="{StaticResource SectionCard}" Visibility="Collapsed">
+                <StackPanel>
+                    <TextBlock x:Name="TxtStudentName" FontSize="14" FontWeight="Bold" Foreground="#1F2024" />
+                    <TextBlock x:Name="TxtMemberCode" FontSize="12" Foreground="#751A38" Margin="0,4,0,0" />
+                    <TextBlock x:Name="TxtCourseSession" FontSize="12" Foreground="#555" Margin="0,2,0,0" />
+                    <TextBlock Text="STATUS: VERIFIED ACTIVE STUDENT" Foreground="Green" FontWeight="Bold" Margin="0,10,0,0" />
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Window>

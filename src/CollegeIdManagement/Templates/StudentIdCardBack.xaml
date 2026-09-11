@@ -1,0 +1,41 @@
+<UserControl x:Class="CollegeIdManagement.Templates.StudentIdCardBack"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Width="323" Height="204" Background="White">
+    <Border BorderBrush="#751A38" BorderThickness="2" CornerRadius="8" ClipToBounds="True">
+        <Grid Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- College Name Header -->
+            <TextBlock Grid.Row="0" Text="{Binding CollegeSettings.CollegeName, DefaultValue='SHYAM NANDAN SAHAY COLLEGE'}"
+                       FontSize="10" FontWeight="Bold" Foreground="#751A38" HorizontalAlignment="Center" />
+
+            <!-- Student Address & Instructions -->
+            <StackPanel Grid.Row="1" Margin="0,6,0,0">
+                <TextBlock Text="ADDRESS &amp; EMERGENCY CONTACT" FontSize="8" FontWeight="Bold" Foreground="#B89135" />
+                <TextBlock Text="{Binding Student.Address, DefaultValue='Station Road, Muzaffarpur, Bihar - 842001'}" FontSize="8" TextWrapping="Wrap" Foreground="#333" Margin="0,2,0,0" />
+
+                <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                    <TextBlock Text="Emergency Mobile: " FontSize="8" FontWeight="Bold" Foreground="#555" />
+                    <TextBlock Text="{Binding Student.EmergencyContactMobile, DefaultValue='+91 9876543211'}" FontSize="8" FontWeight="SemiBold" Foreground="#751A38" />
+                </StackPanel>
+
+                <Separator Margin="0,6" Background="#E2DCE0" />
+
+                <TextBlock Text="TERMS &amp; INSTRUCTIONS" FontSize="8" FontWeight="Bold" Foreground="#B89135" />
+                <TextBlock Text="{Binding CollegeSettings.IdCardInstructions, DefaultValue='1. Non-transferable identity card.\n2. Cardholder must carry this card inside campus.\n3. Return to administrative office if lost/found.'}"
+                           FontSize="7" TextWrapping="Wrap" Foreground="#555" Margin="0,2,0,0" />
+            </StackPanel>
+
+            <!-- Footer Phone & Return -->
+            <Grid Grid.Row="2" Margin="0,4,0,0">
+                <TextBlock Text="{Binding CollegeSettings.Phone, StringFormat='Phone: {0}', DefaultValue='Phone: +91 9128559609'}" FontSize="7" Foreground="#777" HorizontalAlignment="Left" />
+                <TextBlock Text="{Binding CollegeSettings.Website, DefaultValue='www.snscollege.ac.in'}" FontSize="7" Foreground="#777" HorizontalAlignment="Right" />
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,38 @@
+<UserControl x:Class="CollegeIdManagement.Views.IdCards.BulkIdCardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Border Style="{StaticResource SectionCard}" VerticalAlignment="Top" HorizontalAlignment="Center" Width="600" Margin="0,30,0,0">
+            <StackPanel Padding="10">
+                <TextBlock Text="Bulk ID Card Batch Generator" FontSize="18" FontWeight="Bold" Foreground="#751A38" Margin="0,0,0,20" HorizontalAlignment="Center" />
+
+                <!-- Filters -->
+                <Grid Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                        <TextBlock Text="Select Session" Style="{StaticResource FormLabel}" />
+                        <ComboBox ItemsSource="{Binding Sessions}" SelectedItem="{Binding SelectedSession}" Style="{StaticResource ModernComboBox}" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                        <TextBlock Text="Select Course" Style="{StaticResource FormLabel}" />
+                        <ComboBox ItemsSource="{Binding Courses}" SelectedItem="{Binding SelectedCourse}" Style="{StaticResource ModernComboBox}" />
+                    </StackPanel>
+                </Grid>
+
+                <!-- Progress Bar -->
+                <StackPanel Margin="0,0,0,20">
+                    <TextBlock Text="{Binding StatusText}" FontSize="12" Foreground="#555" Margin="0,0,0,6" HorizontalAlignment="Center" />
+                    <ProgressBar Height="22" Value="{Binding ProgressValue}" Maximum="{Binding MaxProgress}" Foreground="#751A38" Background="#E2DCE0" />
+                </StackPanel>
+
+                <!-- Start Button -->
+                <Button Content="GENERATE BULK ID CARDS PDF" Command="{Binding GenerateBulkCommand}" Style="{StaticResource ModernButton}" Height="42" FontSize="14" IsEnabled="{Binding IsGenerating, Converter={StaticResource StringToVisConverter}, FallbackValue=True}" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

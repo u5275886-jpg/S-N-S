@@ -1,0 +1,24 @@
+<UserControl x:Class="CollegeIdManagement.Views.Reports.ReportsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Border Style="{StaticResource SectionCard}">
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,15">
+                    <TextBlock Text="System Audit Logs &amp; Activity Tracking" FontSize="16" FontWeight="Bold" Foreground="#751A38" VerticalAlignment="Center" />
+                    <Button Content="Refresh Logs" Command="{Binding RefreshLogsCommand}" Style="{StaticResource OutlineButton}" Margin="20,0,0,0" Padding="12,4" />
+                </StackPanel>
+
+                <DataGrid ItemsSource="{Binding AuditLogs}" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Timestamp" Binding="{Binding Timestamp, StringFormat='dd/MM/yyyy HH:mm:ss'}" Width="150" />
+                        <DataGridTextColumn Header="User" Binding="{Binding Username}" Width="100" />
+                        <DataGridTextColumn Header="Action" Binding="{Binding Action}" Width="140" />
+                        <DataGridTextColumn Header="Entity" Binding="{Binding Entity}" Width="100" />
+                        <DataGridTextColumn Header="Details" Binding="{Binding Details}" Width="*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </DockPanel>
+        </Border>
+    </Grid>
+</UserControl>

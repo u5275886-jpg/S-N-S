@@ -1,0 +1,33 @@
+<Window x:Class="CollegeIdManagement.Views.IdCards.IdCardPreviewView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:templates="clr-namespace:CollegeIdManagement.Templates"
+        Title="ID Card Full Preview &amp; Print" Height="650" Width="900"
+        WindowStartupLocation="CenterScreen" Background="#F6F3F5">
+    <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Student ID Card Preview" FontSize="18" FontWeight="Bold" Foreground="#751A38" Margin="0,0,0,15" />
+
+        <!-- Cards Canvas View -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <StackPanel x:Name="CardContentArea" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="FRONT SIDE" FontSize="12" FontWeight="Bold" Foreground="#751A38" HorizontalAlignment="Center" Margin="0,0,0,5" />
+                <templates:StudentIdCardFront Margin="0,0,0,20" />
+
+                <TextBlock Text="BACK SIDE" FontSize="12" FontWeight="Bold" Foreground="#751A38" HorizontalAlignment="Center" Margin="0,0,0,5" />
+                <templates:StudentIdCardBack />
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Bottom Action Bar -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,0,0">
+            <Button Content="Print Direct" Click="BtnPrint_Click" Style="{StaticResource ModernButton}" Margin="0,0,10,0" Height="38" Padding="20,0" />
+            <Button Content="Close" Click="BtnClose_Click" Style="{StaticResource OutlineButton}" Height="38" Padding="20,0" />
+        </StackPanel>
+    </Grid>
+</Window>

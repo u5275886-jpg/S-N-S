@@ -1,0 +1,94 @@
+<UserControl x:Class="CollegeIdManagement.Templates.StudentIdCardFront"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Width="323" Height="204" Background="White">
+    <Border BorderBrush="#B89135" BorderThickness="2" CornerRadius="8" ClipToBounds="True">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="52" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="18" />
+            </Grid.RowDefinitions>
+
+            <!-- Top Maroon Banner -->
+            <Border Grid.Row="0" Background="#751A38" Padding="6,4">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="42" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Grid.Column="0" Source="/Resources/Images/college-logo-placeholder.png" Height="38" Width="38" HorizontalAlignment="Left" />
+
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="4,0,0,0">
+                        <TextBlock Text="{Binding CollegeSettings.CollegeName, DefaultValue='SHYAM NANDAN SAHAY COLLEGE'}" Foreground="White" FontSize="10" FontWeight="Bold" TextTrimming="CharacterEllipsis" />
+                        <TextBlock Text="{Binding CollegeSettings.Address, DefaultValue='MUZAFFARPUR, BIHAR'}" Foreground="#B89135" FontSize="8" FontWeight="SemiBold" />
+                        <TextBlock Text="STUDENT IDENTITY CARD" Foreground="White" FontSize="8" FontWeight="Bold" Margin="0,1,0,0" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Middle Section -->
+            <Grid Grid.Row="1" Margin="8,6,8,4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Photo & QR -->
+                <StackPanel Grid.Column="0">
+                    <Border BorderBrush="#751A38" BorderThickness="1.5" CornerRadius="4" Width="72" Height="86" HorizontalAlignment="Left">
+                        <Image Source="{Binding Student.PhotoPath, TargetNullValue='/Resources/Images/default-student.png'}" Stretch="UniformToFill" />
+                    </Border>
+                    <Image Source="{Binding QrCodeImage}" Height="38" Width="38" HorizontalAlignment="Center" Margin="0,4,0,0" />
+                </StackPanel>
+
+                <!-- Student Info -->
+                <StackPanel Grid.Column="1" Margin="6,0,0,0" VerticalAlignment="Top">
+                    <TextBlock Text="{Binding Student.Name, DefaultValue='RAHUL KUMAR'}" FontSize="12" FontWeight="Bold" Foreground="#1F2024" TextTrimming="CharacterEllipsis" />
+
+                    <Grid Margin="0,4,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="65" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Father Name:" FontSize="8" Foreground="#555" />
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Student.FatherName, DefaultValue='RAMESH PRASAD'}" FontSize="8" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Roll No:" FontSize="8" Foreground="#555" />
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Student.RollNo, DefaultValue='001'}" FontSize="8" FontWeight="Bold" Foreground="#751A38" />
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Member Code:" FontSize="8" Foreground="#555" />
+                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Student.MemberCode, DefaultValue='SNSEC/BA/2026/001'}" FontSize="8" FontWeight="SemiBold" />
+
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Course:" FontSize="8" Foreground="#555" />
+                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Student.Course, DefaultValue='B.A'}" FontSize="8" FontWeight="SemiBold" />
+
+                        <TextBlock Grid.Row="4" Grid.Column="0" Text="Session:" FontSize="8" Foreground="#555" />
+                        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Student.Session, DefaultValue='2026-27'}" FontSize="8" FontWeight="SemiBold" />
+
+                        <TextBlock Grid.Row="5" Grid.Column="0" Text="Valid Till:" FontSize="8" Foreground="#555" />
+                        <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Student.ValidTill, StringFormat='dd/MM/yyyy', DefaultValue='30/06/2029'}" FontSize="8" FontWeight="Bold" Foreground="#751A38" />
+                    </Grid>
+                </StackPanel>
+            </Grid>
+
+            <!-- Bottom Footer Bar -->
+            <Border Grid.Row="2" Background="#1F2024" Padding="6,2">
+                <Grid>
+                    <TextBlock Text="AUTHORIZED SIGNATURE" Foreground="#B89135" FontSize="7" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    <TextBlock Text="DEMO / SAMPLE" Foreground="White" FontSize="7" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>
