@@ -1,14 +1,14 @@
 # COLLEGE ID MANAGEMENT SYSTEM
 
-## Overview / Overview
-A complete, production-ready Windows desktop application built with **C# .NET 8**, **WPF**, **Entity Framework Core (SQLite)**, **QuestPDF**, **ClosedXML**, and **QRCoder** for **Shyam Nandan Sahay College, Muzaffarpur, Bihar**.
+## Overview / overview
+A complete, production-ready application for **Shyam Nandan Sahay College, Muzaffarpur, Bihar** built with **C# .NET 8**, **WPF**, **Entity Framework Core (SQLite)**, **QuestPDF**, **ClosedXML**, and **QRCoder**.
 
 ---
 
 ## 📱 Android APK Generation Guide / Android APK कैसे बनाएं (Complete Guide)
 
 ### 📌 Technical Overview (तकनीकी जानकारी)
-Current application **WPF (Windows Presentation Foundation)** standard par built hai, jo **Windows Desktop OS** (`.exe`) ke liye native hai. Android devices par Windows `.exe` directly install/run nahi hota.
+Current application **WPF (Windows Presentation Foundation)** standard per built hai, jo **Windows Desktop OS** (`.exe`) ke liye native hai. Android devices par Windows `.exe` directly install/run nahi hota.
 
 Yadi aap is project ka **Android APK (`.apk`)** banana chahte hain, toh neeche diye gaye methods aur steps ko follow karein:
 
@@ -29,7 +29,7 @@ Since current app **C# .NET 8** me likhi gayi hai, aap **.NET MAUI (Multi-platfo
 
 #### Steps to Create APK:
 1. **Architecture Migration**:
-   - `CollegeIdManagement.Core` / `Models` / `ViewModels` / `Data (EF Core SQLite)` ko class library me separate karein.
+   - `CollegeIdManagement.Core` / `Models` / `ViewModels` / `Data (EF Core SQLite)` ko class library me separation karein.
    - WPF XAML Views ko **.NET MAUI ContentPage** (XAML) me translate karein.
 
 2. **Build Release APK**:
@@ -76,30 +76,41 @@ Yadi aap Mobile me sirf **Student Verification & QR Code Scan** karna chahte hai
 
 ---
 
-## Features
-- Complete Student Management (Add, Edit, Delete, Filter, Search)
-- Auto Member Code Generation (`SNSEC/BA/2026/001`)
-- Auto Roll Number Generation (`001`, `002`)
-- High-Resolution Front/Back ID Card Preview & PDF Generation
-- Bulk ID Card Generation with Async Progress Tracking
-- Excel Import (`.xlsx`) and Export
-- QR Code Verification System
-- Visual ID Card Template Designer
-- Database Backup & Restore (`.zip`)
-- Multi-User Authentication (Admin, Operator, Viewer) with hashed passwords
-- Audit Logging & Activity Tracking
+## 💻 Windows Desktop Build & Run Guide (Windows (.exe) कैसे बनाएं)
 
-## Demo Login
+### Prerequisites:
+- Windows 10 / 11
+- .NET 8.0 SDK or higher
+- Visual Studio 2022+ with WPF Workload
+
+### Build & Run Commands:
+```bash
+# Dependencies restore karein
+dotnet restore
+
+# Release Build karein
+dotnet build -c Release
+
+# Run application
+dotnet run --project src/CollegeIdManagement/CollegeIdManagement.csproj
+
+# Run Unit Tests
+dotnet test
+```
+
+### Creating Windows Setup (.exe Installer):
+1. Install **Inno Setup Compiler**.
+2. Open `installer/CollegeIdManagement.iss` in Inno Setup.
+3. Click **Compile** to generate `College_ID_Management_Setup.exe`.
+
+---
+
+## 📁 Data Directory Location
+All databases, uploaded photos, signatures, and exported files are stored at:
+`%LOCALAPPDATA%\CollegeIdManagement\`
+
+---
+
+## 🔑 Demo Login Credentials
 - **Username:** `admin`
 - **Password:** `admin123`
-
-## How to Build & Run (Windows Desktop)
-1. Open Visual Studio 2022 / 2025.
-2. Load `CollegeIdManagement.sln`.
-3. Run `dotnet restore`
-4. Run `dotnet build -c Release`
-5. Execute `dotnet run --project src/CollegeIdManagement/CollegeIdManagement.csproj`
-
-## Data Directory
-All databases and uploaded photos/signatures are automatically created under:
-`%LOCALAPPDATA%\CollegeIdManagement\`
